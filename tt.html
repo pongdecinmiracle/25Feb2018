@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Data Tables</title>
+
+		<!-- นำเข้า  CSS จาก Bootstrap -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		
+		<!-- นำเข้า  CSS จาก dataTables -->
+		<link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.10.12/css/jquery.dataTables.css">
+		 
+		<!-- นำเข้า  Javascript จาก  Jquery -->
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<!-- นำเข้า  Javascript  จาก   dataTables -->
+		<script type="text/javascript" charset="utf8" src="http://cdn.datatables.net/1.10.12/js/jquery.dataTables.js"></script>
+
+		<script type="text/javascript">
+			//คำสั่ง Jquery เริ่มทำงาน เมื่อ โหลดหน้า Page เสร็จ 
+			$(function(){
+				//กำหนดให้  Plug-in dataTable ทำงาน ใน ตาราง Html ที่มี id เท่ากับ example
+				// $('#example').dataTable();
+			});
+		</script>
+		<style>
+					.scrollbar
+			{
+				margin-left: 30px;
+				float: left;
+				height: 300px;
+				width: 65px;
+				background: #F5F5F5;
+				overflow-y: scroll;
+				margin-bottom: 25px;
+			}
+
+			.force-overflow
+			{
+				min-height: 450px;
+			}
+
+			#wrapper
+			{
+				text-align: center;
+				width: 500px;
+				margin: auto;
+			}
+		</style>
+  </head>
+  <body>
+		
+  
+<h1>Data Tables </h1>
+
+	<div id="wrapper">
+		<div class="scrollbar" id="style-default">
+		  <div class="force-overflow">
+				<table class="table table-bordered" id="example">
+						<thead>
+								<th>Name</th>
+								<th>Position</th>
+								<th>Office</th>
+								<th>Age</th>
+								<th>Start date</th>
+								<th>Salary</th>
+								<th>Salary1</th>
+						</thead>
+						<tfoot>
+								<tr>
+									<th>Name</th>
+									<th>Position</th>
+									<th>Office</th>
+									<th>Age</th>
+									<th>Start date</th>
+									<th>Salary</th>
+									<th>Salary1</th>
+								</tr>
+							</tfoot>
+						<tbody>
+						</tbody>
+					</table>
+		  </div>
+		</div>
+	</div>
+		
+		
+  </body>
+  <script>
+	  $('#example').dataTable({
+
+		});
+    //   window.query()
+            function query(){
+            
+            
+            $(document).ready(function(){
+                $.get("http://localhost:3001/dashboard/table1", 
+                {}).then(function(res,status){
+                        console.log(res)
+
+                        if(status!="success"){
+                            console.log("err")
+                        }else{
+                            var len = res.length
+                            console.log("Length = "+len)
+							if(len==0){
+									$(document).ready(function() {    
+									$('table tbody')[0].innerHTML +=
+									"Not Found"
+								})
+							}else{
+
+									res.forEach(element => {
+									$(document).ready(function() {    
+									$('#example tbody')[0].innerHTML +=
+									"<tr>" +
+											"<td >"+
+												"test"+
+											"</td>"+
+											"<td>"+
+												// IP Addr
+												element.src+
+                                            "</td>"+
+                                            "<td >"+
+												// Protocal
+												element.proto+
+                                            "</td>"+
+                                            "<td>"+
+												// Date
+												element.timestamp+
+                                            "</td>"+
+                                            "<td>"+
+												// Signature ID
+												element.sig_id+
+                                            "</td>"+
+                                            "<td>"+
+												// Type
+												element.msg+
+                                            "</td>"+
+                                                //Status
+											"<td >"+
+												"test"+
+											"</td>" +
+									"</tr>"
+									
+								})
+								});
+									
+							}
+						}
+
+                })
+                        
+                    
+            })
+            
+            
+        }
+  </script>
+</html>
