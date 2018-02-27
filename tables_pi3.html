@@ -77,58 +77,58 @@
 					<ul class="nav ace-nav">
 
 <!-- All Notification Alert -->
-						<li class="purple dropdown-modal">
-							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
-								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important">10</span>
-							</a>
+<li class="purple dropdown-modal">
+	<a data-toggle="dropdown" class="dropdown-toggle" href="#">
+		<i class="ace-icon fa fa-bell icon-animated-bell"></i>
+		<span class="badge badge-important" id="all_noti_alert"></span>
+	</a>
 <!-- All Notification -->
-							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
-								<li class="dropdown-header">
-									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									10 Notifications
-								</li>
+	<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
+		<li class="dropdown-header">
+			<i class="ace-icon fa fa-exclamation-triangle"></i>
+			Notifications
+		</li>
 
-								<li class="dropdown-content">
-									<ul class="dropdown-menu dropdown-navbar navbar-pink">
-										<li>
-											<a href="">
-												<div class="clearfix">
-													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-pink fa bigger-110 fa-exclamation-triangle"></i>
-														All New Detect !!
-													</span>
-													<span class="pull-right badge badge-info">+12</span>
-												</div>
-											</a>
-										</li>
-										
-										<li>
-											<a href="tables.html">
-												<i class="fa bigger-110 fa-user">
-														New Update By Raspberry Pi 1
-												</i>
-												<span class="pull-right badge badge-info">+11</span>
-											</a>
-										</li>
-										
-										<li>
-											<a href="tables_pi2.html">
-													<i class="fa bigger-110 fa-user">
-															New Update By Raspberry Pi 2
-													</i>
-												<span class="pull-right badge badge-info">+12</span>
-											</a>
-										</li>
-										
-										<li>
-											<a href="tables_pi3.html">
-													<i class="fa bigger-110 fa-user">
-															New Update By Raspberry Pi 3
-													</i>
-												<span class="pull-right badge badge-info">+8</span>
-											</a>
-										</li>
+		<li class="dropdown-content">
+			<ul class="dropdown-menu dropdown-navbar navbar-pink">
+				<li>
+					<a href="">
+						<div class="clearfix">
+							<span class="pull-left">
+								<i class="btn btn-xs no-hover btn-pink fa bigger-110 fa-exclamation-triangle"></i>
+								All New Detect !!
+							</span>
+							<span class="pull-right badge badge-info" id="all_noti_alert1"></span>
+						</div>
+					</a>
+				</li>
+				
+				<li>
+					<a href="tables.html" onclick="table1()">
+						<i class="fa bigger-110 fa-user">
+								New Update By Raspberry Pi 1
+						</i>
+						<span class="pull-right badge badge-info" ><div id="new_alert1"></div></span>
+					</a>
+				</li>
+				
+				<li>
+					<a href="tables_pi2.html" onclick="table2()">
+							<i class="fa bigger-110 fa-user">
+									New Update By Raspberry Pi 2
+							</i>
+						<span class="pull-right badge badge-info" ><div id="new_alert2"></div></span>
+					</a>
+				</li>
+				
+				<li>
+					<a href="tables_pi3.html" onclick="table3()">
+							<i class="fa bigger-110 fa-user">
+									New Update By Raspberry Pi 3
+							</i>
+						<span class="pull-right badge badge-info" ><div id="new_alert3"></div></span>
+					</a>
+				</li>
 									</ul>
 								</li>
 
@@ -364,7 +364,7 @@
 
 										<!-- div.dataTables_borderWrap -->
 										<div>
-											<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+											<table id="dynamic-table3" class="table table-striped table-bordered table-hover">
 												<thead>
 												<tr>
 													<th class="center">
@@ -503,25 +503,63 @@
 				}
 				window.location.href= 'login.html'
 			}
+			window.noti_alert1()
+			window.noti_alert2()
+			window.noti_alert3()
+			function noti_alert1(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert1", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert1 = "+l)
+						$('#new_alert1')[0].innerHTML += l
+						
+						
+					})
+				}
+			function noti_alert2(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert2", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert2 = "+l)
+						$('#new_alert2')[0].innerHTML += l
+						
+						
+					})
+				}
+			function noti_alert3(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert3", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert3 = "+l)
+						$('#new_alert3')[0].innerHTML += l
+						
+						
+					})
+				}
+			window.all_noti_alert()
+			function all_noti_alert(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/all_noti_alert", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						$('#all_noti_alert')[0].innerHTML += res
+						$('#all_noti_alert1')[0].innerHTML += res
+						
+						
+					})
+				}
 
-		</script>
-		
-
-
-        <script>
-            // window.myReload()
-            function myReload() {
-                    
-                location.reload();
-
-                }
-                
             
-
-            window.query()
+			window.query()
             function query(){
-            $(document).ready(function(){
-                $.get("http://localhost:3001/dashboard/table3", 
+            	$(document).ready(function(){
+                $.get("http://localhost:3001/tables/table3", 
                 {}).then(function(res,status){
                         console.log(res)
 
@@ -537,54 +575,76 @@
 								})
 							}else{
 									res.forEach(element => {
-									$(document).ready(function() {    
-									$('table tbody')[0].innerHTML +=
-									"<tr>" +
-											"<td class=\"center\">"+
-												"<label class=\"pos-rel\">"+
-													"<input type=\"checkbox\" class=\"ace\" />"+
-													"<span class=\"lbl\"></span>"+
-												"</label>"+
-											"</td>"+
-											"<td>"+
-												// IP Addr
-												element.src+
-                                            "</td>"+
-                                            "<td>"+
-												// Protocal
-												element.proto+
-                                            "</td>"+
-                                            "<td>"+
-												// Date
-												element.timestamp+
-                                            "</td>"+
-                                            "<td>"+
-												// Signature ID
-												element.sig_id+
-                                            "</td>"+
-                                            "<td>"+
-												// Type
-												element.msg+
-                                            "</td>"+
-                                                //Status
-											"<td class=\"hidden-480\">"+
-												"<span class=\"label label-success arrowed\">Allow</span>" +
-											"</td>" +
-									"</tr>"
-									
-								})
+										var body = "<tr>"
+										body += "<td class\"center\">"+"</td>"
+										body += "<label class=\"pos-res\">"
+										body += "<input type=\"checkbox\" class=\"ace\" />"
+										body += "<span class=\"lbl\"></span>"
+										body += "</label>"
+										body += "</td>"
+										body += "<td>"+element.src+"</td>"
+										body += "<td>"+element.proto+"</td>"
+										body += "<td>"+element.timestamp+"</td>"
+										body += "<td>"+element.sig_id+"</td>"
+										body += "<td>"+element.msg+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-success arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table3" ).append(body);
 								});
-									
+								/*DataTables instantiation.*/
+								$( "#dynamic-table3" ).DataTable();
+															
 							}
 						}
-
-                })
+						// $('dynamic-table').DataTable();
+                })//then
                         
                     
-            })
+            	})//ready
+			}//query
+			function table1(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable1", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			function table2(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable2", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			function table3(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable3", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			
+
+		</script>
+		
+
+
+        <script>
+            // window.myReload()
+            function myReload() {
+                    
+                location.reload();
+
+                }
+                
             
+
             
-        }
         </script>
 	</body>
 </html>

@@ -82,13 +82,13 @@
 						<li class="purple dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important">10</span>
+								<span class="badge badge-important" id="all_noti_alert"></span>
 							</a>
 <!-- All Notification -->
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									10 Notifications
+									Notifications
 								</li>
 
 								<li class="dropdown-content">
@@ -100,35 +100,35 @@
 														<i class="btn btn-xs no-hover btn-pink fa bigger-110 fa-exclamation-triangle"></i>
 														All New Detect !!
 													</span>
-													<span class="pull-right badge badge-info">+12</span>
+													<span class="pull-right badge badge-info" id="all_noti_alert1"></span>
 												</div>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables.html">
+											<a href="tables.html" onclick="table1()">
 												<i class="fa bigger-110 fa-user">
 														New Update By Raspberry Pi 1
 												</i>
-												<span class="pull-right badge badge-info">+11</span>
+												<span class="pull-right badge badge-info" ><div id="new_alert1"></div></span>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables_pi2.html">
+											<a href="tables_pi2.html" onclick="table2()">
 													<i class="fa bigger-110 fa-user">
 															New Update By Raspberry Pi 2
 													</i>
-												<span class="pull-right badge badge-info">+12</span>
+												<span class="pull-right badge badge-info" ><div id="new_alert2"></div></span>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables_pi3.html">
+											<a href="tables_pi3.html" onclick="table3()">
 													<i class="fa bigger-110 fa-user">
 															New Update By Raspberry Pi 3
 													</i>
-												<span class="pull-right badge badge-info">+8</span>
+												<span class="pull-right badge badge-info" ><div id="new_alert3"></div></span>
 											</a>
 										</li>
 									</ul>
@@ -355,7 +355,7 @@
 	 </div>
 
  </div>
-  <div class="rulebody">
+  <div>
   <br><br>
 		<!-- Add Rule Basic -->
 		<div class="col-sm-12">
@@ -571,8 +571,8 @@
 </form>
 
 <!-- Edit Rule (Drop & Alert) : Raspberry Pi 1 -->
-<div class="rulebody">
-    <form action="./snorpy_rule1.php" >
+<div >
+    <form method="post" action="./snorpy_rule1.php" >
         <!-- Add Rule : BlankSpace -->
 		<div class="col-sm-12">
 				<br><br><br><br>
@@ -597,8 +597,8 @@
     </form>
 </div>
 <!-- Modify Rule : Raspberry Pi 1 -->
-<div class="rulebody">
-    <form action="./snorpy_rule1.php">
+<div >
+    <form method="post" action="./snorpy_rule1.php">
         <!-- Add Rule : BlankSpace -->
 		<div class="col-sm-12">
 				<br><br><br><br>
@@ -608,17 +608,24 @@
         
         <h4>Modify Rule Use/Unuse : Raspberry Pi 1</h4>
         <div class="col-sm-12">
-            <br><br> Signature ID : 
-            <input style="width: 20%" type="text" name="sid_use" id="sid_use" placeholder="Example : 10000001">
+
+			<br>
+			input "#"
+			<br>
+			 Signature ID : 
+            <input style="width: 30%" type="text" name="sid_unuse" id="sid_unuse" placeholder="Example : 10000001">
             <br>
-			<br><br>
-			<input type="submit" class="btn btn-secondary" style="border-radius: 6px;" name="submit" value="Submit" onclick="useRule()" >  			
+			<br>
+			<br>
+			<input type="submit" class="btn btn-secondary" style="border-radius: 6px;" name="submit" value="Submit" onclick="unuseRule()" >  			
 			
         </div>
         <!-- <h4>Modify Rule Use/Unuse : Raspberry Pi 1</h4> -->
         <div class="col-sm-12">
-            <br><br> Signature ID : 
-            <input style="width: 20%" type="text" name="sid_use" id="sid_use" placeholder="Example : 10000001">
+			<br>
+			delete "#"
+			<br> Signature ID : 
+            <input style="width: 30%" type="text" name="sid_use" id="sid_use" placeholder="Example : 10000001">
             <br>
 			<br><br>
 			<input type="submit" class="btn btn-secondary" style="border-radius: 6px;" name="submit" value="Submit" onclick="useRule()" >  			
@@ -631,8 +638,8 @@
 </div>
 
 <!-- Delete Rule : Raspberry Pi 1 -->
-<div class="rulebody">
-    <form action="./snorpy_rule1.php">
+<div >
+    <form method="post" action="./snorpy_rule1.php">
         <!-- Add Rule : BlankSpace -->
 		<div class="col-sm-12">
 				<br><br><br><br>
@@ -691,31 +698,157 @@
 		<!-- basic scripts -->
 		<script src="assets/js/jquery-2.1.4.min.js"></script>
 
-<!-- <![endif]-->
+		<!-- <![endif]-->
 
-<!--[if IE]>
+		<!--[if IE]>
 <script src="assets/js/jquery-1.11.3.min.js"></script>
 <![endif]-->
-<script type="text/javascript">
-	if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
-</script>
-<script src="assets/js/bootstrap.min.js"></script>
-
-<!-- page specific plugin scripts -->
-<script src="assets/js/jquery.dataTables.min.js"></script>
-<script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
-<script src="assets/js/dataTables.buttons.min.js"></script>
-<script src="assets/js/buttons.flash.min.js"></script>
-<script src="assets/js/buttons.html5.min.js"></script>
-<script src="assets/js/buttons.print.min.js"></script>
-<script src="assets/js/buttons.colVis.min.js"></script>
-<script src="assets/js/dataTables.select.min.js"></script>
-
-<!-- ace scripts -->
-<script src="assets/js/ace-elements.min.js"></script>
-<script src="assets/js/ace.min.js"></script>
-
 		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="assets/js/bootstrap.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+		<script src="assets/js/jquery.dataTables.min.js"></script>
+		<script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
+		<script src="assets/js/dataTables.buttons.min.js"></script>
+		<script src="assets/js/buttons.flash.min.js"></script>
+		<script src="assets/js/buttons.html5.min.js"></script>
+		<script src="assets/js/buttons.print.min.js"></script>
+		<script src="assets/js/buttons.colVis.min.js"></script>
+		<script src="assets/js/dataTables.select.min.js"></script>
+
+		<!-- ace scripts -->
+		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="assets/js/ace.min.js"></script>
+    	<script type="text/javascript">
+
+			window.noti_alert1()
+			window.noti_alert2()
+			window.noti_alert3()
+			function noti_alert1(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert1", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert1 = "+l)
+						$('#new_alert1')[0].innerHTML += l
+						
+						
+					})
+				}
+			function noti_alert2(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert2", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert2 = "+l)
+						$('#new_alert2')[0].innerHTML += l
+						
+						
+					})
+				}
+			function noti_alert3(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert3", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert3 = "+l)
+						$('#new_alert3')[0].innerHTML += l
+						
+						
+					})
+				}
+			window.all_noti_alert()
+			function all_noti_alert(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/all_noti_alert", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						$('#all_noti_alert')[0].innerHTML += res
+						$('#all_noti_alert1')[0].innerHTML += res
+						
+						
+					})
+				}
+
+            
+			window.query()
+            function query(){
+            	$(document).ready(function(){
+                $.get("http://localhost:3001/tables/table1", 
+                {}).then(function(res,status){
+                        console.log(res)
+
+                        if(status!="success"){
+                            console.log("err")
+                        }else{
+                            var len = res.length
+                            console.log("Length = "+len)
+							if(len==0){
+									$(document).ready(function() {    
+									$('table tbody')[0].innerHTML +=
+									"Not Found"
+								})
+							}else{
+									res.forEach(element => {
+										var body = "<tr>"
+										body += "<td class\"center\">"+"</td>"
+										body += "<label class=\"pos-res\">"
+										body += "<input type=\"checkbox\" class=\"ace\" />"
+										body += "<span class=\"lbl\"></span>"
+										body += "</label>"
+										body += "</td>"
+										body += "<td>"+element.src+"</td>"
+										body += "<td>"+element.proto+"</td>"
+										body += "<td>"+element.timestamp+"</td>"
+										body += "<td>"+element.sig_id+"</td>"
+										body += "<td>"+element.msg+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-success arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table1" ).append(body);
+								});
+								/*DataTables instantiation.*/
+								$( "#dynamic-table1" ).DataTable();
+															
+							}
+						}
+						// $('dynamic-table').DataTable();
+                })//then
+                        
+                    
+            	})//ready
+			}//query
+			function table1(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable1", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			function table2(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable2", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			function table3(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable3", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			
 
 			$(document).ready(function(){
 						var token = localStorage.getItem("Token")
@@ -729,67 +862,45 @@
 								})
 						})
 			})
-			
-			function getRule(){
-				var action = document.getElementById("action").value
-				var protocol = document.getElementById("protocol").value
-				var sid = document.getElementById("sid").value
-				var headermessage = document.getElementById("headermessage").value
-				var color = getRandomColor()
-				if(!sig_id || sig_id == null || sig_id == ""){
-
-					}else{
-						var person = prompt("Please Confirm No. of Rule ID \""+sid+"\" :", "No. of Rule ID")
-						if (person == null || person == "" || person == "No. of Rule ID") {
-							// alert("Wrong Rule ID")
-							window.location.href = "add_rule1.php"
-						} else if(person==sid) {
-							if(!manual || manual == null || manual == 0){
-								console.log("err")
-							}else{
-								$.post("http://localhost:3001/addrule", 
-									{Type:type,Protocol:protocol,Sig_id:sig_id,Color:color,Msg:msg,Manual:manual}).then(function(res,status){
-										console.log("pass")
-										if(res.success=="true"){
-											alert(res.message)
-											
-										}else{
-											alert(res.message)
-										}
-									})
-							}
-						}else{
-							window.location.href = "add_rule1.php"
-						}
-					}
-			}
-			
-			// function manualRule(){
-			// 	var type = document.getElementById("type").value
-			// 	var protocol = document.getElementById("protocolM").value
-			// 	var sig_id = document.getElementById("sig_id").value
-			// 	var manual = document.getElementById("manual").value
-			// 	var msg = document.getElementById("msg").value
+//Add Rule Simple		
+			// function getRule(){
+			// 	var action = document.getElementById("action").value
+			// 	var protocol = (document.getElementById("protocol").value)
+			// 	var sid = document.getElementById("sid").value
+			// 	var headermessage = document.getElementById("headermessage").value
 			// 	var color = getRandomColor()
-			// 	if(!manual || manual == null || manual == 0){
-			// 		console.log("err")
-			// 	}else{
-			// 		$.post("http://localhost:3001/addrule", 
-			// 			{Type:type,Protocol:protocol,Sig_id:sig_id,Color:color,Msg:msg,Manual:manual}).then(function(res,status){
-			// 				console.log("pass")
-			// 				if(res.success=="true"){
-			// 					alert(res.message)
+			// 	if(!sig_id || sig_id == null || sig_id == ""){
+
+			// 		}else{
+			// 			var person = prompt("Please Confirm No. of Rule ID \""+sid+"\" :", "No. of Rule ID")
+			// 			if (person == null || person == "" || person == "No. of Rule ID") {
+			// 				// alert("Wrong Rule ID")
+			// 				window.location.href = "add_rule1.php"
+			// 			} else if(person==sid) {
+			// 				if(!manual || manual == null || manual == 0){
+			// 					console.log("err")
 			// 				}else{
-			// 					alert(res.message)
+			// 					$.post("http://localhost:3001/addrule/addRule1", 
+			// 						{Type:type,Protocol:protocol,Sig_id:sig_id,Color:color,Msg:msg,Manual:manual}).then(function(res,status){
+			// 							console.log("pass")
+			// 							if(res.success=="true"){
+			// 								alert(res.message)
+											
+			// 							}else{
+			// 								alert(res.message)
+			// 							}
+			// 						})
 			// 				}
-			// 			})
-			// 	}
-				
+			// 			}else{
+			// 				window.location.href = "add_rule1.php"
+			// 			}
+			// 		}
 			// }
-			
+
+//Add Manual Rule			
 			function showRule(){
 				var type = document.getElementById("type").value
-				var protocol = document.getElementById("protocolM").value
+				var protocol = document.getElementById("protocolM").value.toLowerCase()
 				var sig_id = document.getElementById("sig_id").value
 				var manual = document.getElementById("manual").value
 				var msg = document.getElementById("msg").value
@@ -805,7 +916,7 @@
 						if(!manual || manual == null || manual == 0){
 							console.log("err")
 						}else{
-							$.post("http://localhost:3001/addrule", 
+							$.post("http://localhost:3001/addrule/addRule1", 
 								{Type:type,Protocol:protocol,Sig_id:sig_id,Color:color,Msg:msg,Manual:manual}).then(function(res,status){
 									console.log("pass")
 									if(res.success=="true"){
@@ -823,6 +934,73 @@
 					
 				
 			}
+
+//Edit Rule to Pi1
+			function editRule(){	
+				var type = document.getElementById("type_action").value
+				var sid = document.getElementById("sid_edit").value	
+				// console.log("pass"+type+" "+sid)
+				$(document).ready(function(){
+				$.post("http://localhost:3001/addrule/editRule1", 
+						{type:type,sid:sid}).then(function(err,status){
+							if(err){
+								// alert(err)
+							}else{
+								alert(status)
+							}
+						})
+				})
+			}
+
+//Modify Rule Use
+			function useRule(){	
+				var sid_use = document.getElementById("sid_use").value
+				// console.log("pass"+type+" "+sid)
+				$(document).ready(function(){
+				$.post("http://localhost:3001/addrule/useRule1", 
+						{sid:sid_use}).then(function(err,status){
+							if(err){
+								// alert(err)
+							}else{
+								alert(status)
+							}
+						})
+				})
+			}
+
+//Modify Rule Unuse
+			function unuseRule(){	
+				var sid_unuse = document.getElementById("sid_unuse").value
+				// console.log("pass"+type+" "+sid)
+				$(document).ready(function(){
+				$.post("http://localhost:3001/addrule/unuseRule1", 
+						{sid:sid_unuse}).then(function(err,status){
+							if(err){
+								// alert(err)
+							}else{
+								alert(status)
+							}
+						})
+				})
+			}
+
+//Modify Rule Delete
+			function deleteRule(){	
+				var sid_delete = document.getElementById("sid_delete").value	
+				// console.log("pass"+type+" "+sid)
+				$(document).ready(function(){
+				$.post("http://localhost:3001/addrule/sid_delete1", 
+						{Sig_id:sid_delete}).then(function(err,status){
+							if(err){
+								// alert(err)
+							}else{
+								alert(status)
+							}
+						})
+				})
+			}
+			
+			
 
 
 			function getRandomColor() {

@@ -718,11 +718,18 @@
 						var DataPlot = []
 						$.get("http://localhost:3001/dashboard/chartHistogram", 
 						{}).then(function(res,status){
-							// console.log(res)
+							console.log(res)
 								res.forEach(element => {
 									var a = element.alert1s
-									var l = Object.keys(a).length
-									amount.push(l)
+									var b = element.alert2s
+									var c = element.alert3s
+									var la = Object.keys(a).length
+									var lb = Object.keys(b).length
+									var lc = Object.keys(c).length
+									var d = la+lb+lc
+									console.log("sum is "+d)
+									// var l = Object.keys(a).length
+									amount.push(d)
 								});
 								res.forEach(element => {
 									Rule_id.push(element.Sig_id)
@@ -775,6 +782,7 @@
 			}) //ready function
 		}
 
+
 		//function : Graph chartCircle
 			window.chartCircle()
 			function chartCircle(){
@@ -792,6 +800,7 @@
 										});
 										CircleChart(data,'#piechart-placeholder')
 										
+									
 
 									})//then
 									$.post("http://localhost:3001/dashboard/chartCircle2", 
@@ -864,8 +873,30 @@
 								}
 							})
 						}
+		var $tooltip = $("<div class='tooltip top in'><div class='tooltip-inner'></div></div>").hide().appendTo('body');
+		var previousPoint = null;
+			
+			  placeholder.on('plothover', function (event, pos, item) {
+				if(item) {
+					if (previousPoint != item.seriesIndex) {
+						previousPoint = item.seriesIndex;
+						var tip = item.series['label'] + " : " + item.series['percent']+'%';
+						$tooltip.show().children(0).text(tip);
+					}
+					$tooltip.css({top:pos.pageY + 10, left:pos.pageX + 10});
+				} else {
+					$tooltip.hide();
+					previousPoint = null;
+				}
+				
+			 });
+		
 			
 		}
+
+		
+		
+		
 
 		//Table Rule
 		window.tableRule()

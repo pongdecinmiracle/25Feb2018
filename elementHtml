@@ -1,0 +1,33 @@
+<table id="dynamic-table" class="table table-striped table-bordered table-hover">
+												<thead>
+												<tr>
+													<th class="center">
+														<label class="pos-rel">
+															<input type="checkbox" class="ace">
+															<span class="lbl"></span>
+														</label>
+													</th>
+													<!-- <th>Details</th> class="detail-col" -->
+                                                    <th>IP Address (SRC)</th>
+                                                    <th>Protocal</th>
+													<th>
+														<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
+														Date
+                                                    </th>
+                                                    <th>Signature ID</th>
+													<th>Type</th>
+													<th class="hidden-480">Status</th>
+													<!-- <th>Optional</th> -->
+												</tr>
+											</thead>
+
+                                                <tbody>
+                                                    <tr>
+                                                    <td class="center">
+                                                    <label class="pos-rel">
+                                                    <input type="checkbox" class="ace">
+                                                    <span class="lbl"></span></label></td><td>192.168.1.8</td><td>TCP</td><td>2018-02-21 19:04:53</td><td>10000005</td><td>"“NMAP TCP Scan”"</td><td class="hidden-480"><span class="label label-success arrowed">Allow</span></td></tr><tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace"><span class="lbl"></span></label></td><td>192.168.1.8</td><td>TCP</td><td>2018-02-21 19:04:54</td><td>10000005</td><td>"“NMAP TCP Scan”"</td><td class="hidden-480"><span class="label label-success arrowed">Allow</span></td></tr><tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace"><span class="lbl"></span></label></td><td>192.168.1.8</td><td>TCP</td><td>2018-02-21 19:04:54</td><td>10000005</td><td>"“NMAP TCP Scan”"</td><td class="hidden-480"><span class="label label-success arrowed">Allow</span></td></tr><tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace"><span class="lbl"></span></label></td><td>192.168.1.8</td><td>TCP</td><td>2018-02-21 19:04:54</td><td>10000005</td><td>"“NMAP TCP Scan”"</td><td class="hidden-480"><span class="label label-success arrowed">Allow</span></td></tr><tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace"><span class="lbl"></span></label></td><td>192.168.1.8</td><td>TCP</td><td>2018-02-21 19:04:54</td><td>10000005</td><td>"“NMAP TCP Scan”"</td><td class="hidden-480"><span class="label label-success arrowed">Allow</span></td></tr><tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace"><span class="lbl"></span></label></td><td>192.168.1.8</td><td>TCP</td><td>2018-02-21 19:04:54</td><td>10000006</td><td>"“NMAP TCP Scan”"</td><td class="hidden-480"><span class="label label-success arrowed">Allow</span></td></tr><tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace"><span class="lbl"></span></label></td><td>192.168.1.8</td><td>TCP</td><td>2018-02-21 19:04:54</td><td>10000006</td><td>"“NMAP TCP Scan”"</td><td class="hidden-480"><span class="label label-success arrowed">Allow</span></td></tr><tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace"><span class="lbl"></span></label></td><td>192.168.1.8</td><td>TCP</td><td>2018-02-21 19:04:54</td><td>10000006</td><td>"“NMAP TCP Scan”"</td><td class="hidden-480"><span class="label label-success arrowed">Allow</span></td></tr><tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace"><span class="lbl"></span></label></td><td>192.168.1.8</td><td>TCP</td><td>2018-02-21 19:04:54</td><td>10000006</td><td>"“NMAP TCP Scan”"</td><td class="hidden-480"><span class="label label-success arrowed">Allow</span></td></tr><tr><td class="center"><label class="pos-rel"><input type="checkbox" class="ace"><span class="lbl"></span></label></td><td>192.168.1.8</td><td>TCP</td><td>2018-02-21 19:04:54</td><td>10000006</td><td>"“NMAP TCP Scan”"</td><td class="hidden-480"><span class="label label-success arrowed">Allow</span></td></tr>
+                                                </tbody>
+                                                
+
+											</table>

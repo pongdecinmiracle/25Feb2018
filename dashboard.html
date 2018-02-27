@@ -65,7 +65,7 @@
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="dashboard.html" class="navbar-brand">
+					<a href="index.html" class="navbar-brand">
 						<small>
 							<i class="fa fa-leaf"></i>
 							Distributed IPS
@@ -79,13 +79,13 @@
 						<li class="purple dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important">10</span>
+								<span class="badge badge-important" id="all_noti_alert"></span>
 							</a>
-
+<!-- All Notification -->
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									10 Notifications
+									Notifications
 								</li>
 
 								<li class="dropdown-content">
@@ -94,38 +94,38 @@
 											<a href="">
 												<div class="clearfix">
 													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-pink fa fa-exclamation-triangle"></i>
+														<i class="btn btn-xs no-hover btn-pink fa bigger-110 fa-exclamation-triangle"></i>
 														All New Detect !!
 													</span>
-													<span class="pull-right badge badge-info">+12</span>
+													<span class="pull-right badge badge-info" id="all_noti_alert1"></span>
 												</div>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables.html">
-													<i class="fa bigger-110 fa-user">
-															New Update By Raspberry Pi 1
-													</i>
-												<span class="pull-right badge badge-info">+11</span>
+											<a href="tables.html" onclick="table1()">
+												<i class="fa bigger-110 fa-user">
+														New Update By Raspberry Pi 1
+												</i>
+												<span class="pull-right badge badge-info" ><div id="new_alert1"></div></span>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables_pi2.html">
+											<a href="tables_pi2.html" onclick="table2()">
 													<i class="fa bigger-110 fa-user">
 															New Update By Raspberry Pi 2
 													</i>
-												<span class="pull-right badge badge-info">+12</span>
+												<span class="pull-right badge badge-info" ><div id="new_alert2"></div></span>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables_pi3.html">
+											<a href="tables_pi3.html" onclick="table3()">
 													<i class="fa bigger-110 fa-user">
 															New Update By Raspberry Pi 3
 													</i>
-												<span class="pull-right badge badge-info">+8</span>
+												<span class="pull-right badge badge-info" ><div id="new_alert3"></div></span>
 											</a>
 										</li>
 
@@ -134,7 +134,12 @@
 									</ul>
 								</li>
 
-								
+								<li class="dropdown-footer">
+									<a href="#">
+										See all notifications
+										<i class="ace-icon fa fa-arrow-right"></i>
+									</a>
+								</li>
 							</ul>
 						</li>
 
@@ -145,15 +150,20 @@
 								<img class="nav-user-photo" src="assets/images/avatars/avatar2.png" alt="User's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-<!-- User -->							<div id="user"></div>
-									
+									<div id="user"></div>
+								
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
 							</a>
 
 							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-								
+								<li>
+									<a href="#">
+										<i class="ace-icon fa fa-cog"></i>
+										Settings
+									</a>
+								</li>
 
 								<li>
 									<a href="profile.html">
@@ -416,7 +426,7 @@
 													</div>
 												</div>
 											</div>
-
+									<!-- Circle1 -->
 											<div class="widget-body">
 												<div class="widget-main">
 													<div id="piechart-placeholder"></div>
@@ -424,7 +434,7 @@
 													<div class="hr hr8 hr-double"></div>
 												</div><!-- /.widget-main -->
 											</div><!-- /.widget-body -->
-											
+
 										</div><!-- /.widget-box -->
 									</div><!-- /.col -->
 									
@@ -479,7 +489,7 @@
 													</div>
 												</div>
 											</div>
-
+									<!-- Circle2 -->
 											<div class="widget-body">
 												<div class="widget-main">
 													<div id="piechart-placeholder2"></div>
@@ -540,7 +550,7 @@
 													</div>
 												</div>
 											</div>
-
+									<!-- Circle3 -->
 											<div class="widget-body">
 												<div class="widget-main">
 													<div id="piechart-placeholder3"></div>
@@ -548,6 +558,7 @@
 													<div class="hr hr8 hr-double"></div>
 												</div><!-- /.widget-main -->
 											</div><!-- /.widget-body -->
+									
 										</div><!-- /.widget-box -->
 									</div><!-- /.col -->
 									
@@ -572,17 +583,111 @@
 													</a>
 												</div>
 											</div>
+											
 
+											<!-- Histrogram -->
 											<div class="widget-body">
 												<div class="widget-main padding-4">
 													<div id="chart_div"></div>
 												</div><!-- /.widget-main -->
 											</div><!-- /.widget-body -->
+											<!-- Histrogram -->
+
+											<!-- Table Rule -->
+											<div class="row">
+													<div class="col-xs-8">
+														<h3 class="header smaller lighter blue">All Rule : Raspberry Pi 1</h3>
+				
+														<div class="clearfix">
+															<div class="pull-right tableTools-container"></div>
+														</div>
+														<div>
+															<table id="dynamic-table1" class="table table-striped table-bordered table-hover">
+																<thead>
+																<tr>
+																	<!-- <th>Details</th> class="detail-col" -->
+																	<th>Type</th>
+																	<th>Protocol</th>
+																	<th>Signature ID</th>
+																	<th>Message</th>
+																	<th>Status Pi1</th>
+																	<th>Working</th>
+																</tr>
+																</thead>
+				
+																<tbody></tbody>
+																
+				
+															</table>
+														</div>
+													</div>
+												</div>
+											<!-- Table Rule -->
+											<!-- Table Rule -->
+											<div class="row">
+												<div class="col-xs-8">
+													<h3 class="header smaller lighter blue">All Rule : Raspberry Pi 2</h3>
+			
+													<div class="clearfix">
+														<div class="pull-right tableTools-container"></div>
+													</div>
+													<div>
+														<table id="dynamic-table2" class="table table-striped table-bordered table-hover">
+															<thead>
+															<tr>
+																<!-- <th>Details</th> class="detail-col" -->
+																<th>Type</th>
+																<th>Protocol</th>
+																<th>Signature ID</th>
+																<th>Message</th>
+																<th>Status Pi2</th>
+																<th>Working</th>
+															</tr>
+															</thead>
+			
+															<tbody></tbody>
+															
+			
+														</table>
+													</div>
+												</div>
+											</div>
+										<!-- Table Rule -->
+										<!-- Table Rule -->
+										<div class="row">
+											<div class="col-xs-8">
+												<h3 class="header smaller lighter blue">All Rule : Raspberry Pi 3</h3>
+		
+												<div class="clearfix">
+													<div class="pull-right tableTools-container"></div>
+												</div>
+												<div>
+													<table id="dynamic-table3" class="table table-striped table-bordered table-hover">
+														<thead>
+														<tr>
+															<!-- <th>Details</th> class="detail-col" -->
+															<th>Type</th>
+															<th>Protocol</th>
+															<th>Signature ID</th>
+															<th>Message</th>
+															<th>Status Pi3</th>
+															<th>Working</th>
+														</tr>
+														</thead>
+		
+														<tbody></tbody>
+														
+		
+													</table>
+												</div>
+											</div>
+										</div>
+									<!-- Table Rule -->
 										</div><!-- /.widget-box -->
 									</div><!-- /.col -->
 								</div><!-- /.row -->
 
-
+<!-- Graph2 -->
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -598,52 +703,14 @@
 							Application &copy; 2017
 						</span>
 
-						<!----------------------------------------------------------------------
-						&nbsp; &nbsp;
-						<span class="action-buttons">
-							<a href="#">
-								<i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
-							</a>
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 
-							<a href="#">
-								<i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
-							</a>
-
-							<a href="#">
-								<i class="ace-icon fa fa-rss-square orange bigger-150"></i>
-							</a>
-						</span>
-						
-						------------------------------------------------------------------->
-					</div>
-				</div>
-			</div>
-
-			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
-				<i class="ace-icon fa fa-angle-double-up icon-only bigger-110"></i>
-			</a>
-		</div><!-- /.main-container -->
-
-		<!-- basic scripts -->
-
-		<!--[if !IE]> -->
-		<script src="assets/js/jquery-2.1.4.min.js"></script>
-
-		<!-- <![endif]-->
-
-		<!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
+		<!-- <script src="assets/js/jquery-2.1.4.min.js"></script> -->
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 		<script src="assets/js/bootstrap.min.js"></script>
-
-		<!-- page specific plugin scripts -->
-
-		<!--[if lte IE 8]>
-		  <script src="assets/js/excanvas.min.js"></script>
-		<![endif]-->
+		<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 		<script src="assets/js/jquery-ui.custom.min.js"></script>
 		<script src="assets/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="assets/js/jquery.easypiechart.min.js"></script>
@@ -651,14 +718,13 @@
 		<script src="assets/js/jquery.flot.min.js"></script>
 		<script src="assets/js/jquery.flot.pie.min.js"></script>
 		<script src="assets/js/jquery.flot.resize.min.js"></script>
-		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!-- //Chart Stats -->	
-		<!-- ace scripts -->
 		<script src="assets/js/ace-elements.min.js"></script>
+		<script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
-
-		<!-- inline scripts related to this page -->
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!-- //Chart Stats -->	
 		<script type="text/javascript">
 
+				
 			$(document).ready(function(){
 						var token = localStorage.getItem("Token")
 						$.post("http://localhost:3001/profile/user", 
@@ -671,7 +737,6 @@
 								})
 						})
 			})
-
 
 			window.check()
 
@@ -699,7 +764,6 @@
 			    }
             }
 
-
 			function logout(){
 				console.log("logout")
 				localStorage.removeItem("Token");
@@ -709,268 +773,497 @@
 					localStorage.removeItem("Admin");
 				}
 				window.location.href= 'login.html'
-			}
+			}	
+			
+		// function : Graph Histrogram
+		// 	window.chartHistogram()
+
+		// 	function chartHistogram() {
+		// 			$(document).ready(function(){
+						
+		// 				var amount = []
+		// 				var Rule_id = []
+		// 				var DataPlot = []
+		// 				$.get("http://localhost:3001/dashboard/chartHistogram1", 
+		// 				{}).then(function(res,status){
+		// 					console.log(res)
+		// 						res.forEach(element => {
+		// 							var a = element.alert1s
+		// 							var b = element.alert2s
+		// 							var c = element.alert3s
+		// 							var la = Object.keys(a).length
+		// 							var lb = Object.keys(b).length
+		// 							var lc = Object.keys(c).length
+		// 							var d = la+lb+lc
+		// 							console.log("sum is "+d)
+		// 							// var l = Object.keys(a).length
+		// 							amount.push(d)
+		// 						});
+		// 						res.forEach(element => {
+		// 							Rule_id.push(element.Sig_id)
+		// 						});
+							
+
+		// 					var ColHead = ['Device']
+		// 					Rule_id.forEach(element => {
+		// 						ColHead.push(element)
+		// 					});
+
+		// 					var ColDetail = ['All Device']
+		// 					amount.forEach(element => {
+		// 						ColDetail.push(element)
+		// 					});
+
+		// 					// DataPlot.push()
+		// 					DataPlot.push(ColHead)
+		// 					DataPlot.push(ColDetail)
 
 
-			// function : send rule to db + Graph Histogram
-			function setData(){
+		// 					// console.log(DataPlot)
+							
+		// 					//Chart Stats	
+		// 					google.charts.load('current', {'packages':['bar']});
+		// 					google.charts.setOnLoadCallback(drawChart);
+		// 					function drawChart() {
+		// 										var data = google.visualization.arrayToDataTable(DataPlot);
+
+		// 										var options = {
+		// 										chart: {
+		// 											title: 'All Package',
+		// 											subtitle: '',
+		// 										},
+		// 										bars: 'vertical',
+		// 										vAxis: {format: 'decimal'},
+		// 										height: 400,
+		// 										colors: ['#1b9e77', '#d95f02', '#7570b3']
+		// 										};
+
+		// 										var chart = new google.charts.Bar(document.getElementById('chart_div'));
+
+		// 										chart.draw(data, google.charts.Bar.convertOptions(options));
+
+		// 										var btns = document.getElementById('btn-group');
+
+												
+		// 					} //drawChart
+		// 			}) //then
+		// 	}) //ready function
+		// }
+
+		//function : Graph chartCircle
+		window.chartCircle()
+		function chartCircle(){
 							$(document).ready(function(){
-									$.post("http://localhost:3001/test/chart", 
-									{rule : rule}).then(function(res,status){
-										// console.log(res)
-										//Chart Stats			
-										google.charts.load('current', {'packages':['bar']});
-											google.charts.setOnLoadCallback(drawChart);
+									// console.log(rule)
+									$.get("http://localhost:3001/dashboard/chartCircle1", 
+									{}).then(function(res,status){
+										// console.log("1"+res)
+										var data = []
+										// var data1 = []
+										res.forEach(element => {
+											var l = Object.keys(element.alert1s).length
+											data.push({ label : element.Sig_id , data : l , color: element.Color})
+											// console.log(l)
+										});
+										CircleChart(data,'#piechart-placeholder')
+										
 
-											function drawChart() {
-												// var DataPlot = [
-												//   ['Year', 'Sales', 'Expenses', 'Profit','a','b'],
-												//   ['2014', 1000, 400, 200 , 100 ,200],
-												//   ['2015', 1170, 460, 250 , 100 ,200],
-												//   ['2016', 660, 1120, 300 , 100 ,200],
-												//   ['2017', 1030, 540, 350 , 100 ,200]
-												// ]
-												var DataPlot = []
-												var DataHead = ['RaspberryPi']
-												res.forEach(element => {
-													DataHead.push(element._id)
-												})
-												DataPlot.push(DataHead)
-												var DataPackage = ['1']
-												res.forEach(element => {
-													DataPackage.push(element.total_packet)
-												});
-												DataPlot.push(DataPackage)
-												console.log(DataPackage)
-												// DataPlot.push(DataPackage)
+									})//then
+									$.get("http://localhost:3001/dashboard/chartCircle2", 
+									{}).then(function(res,status){
+										// console.log("2"+res)
+										var data2 = []
+										// var data1 = []
+										res.forEach(element => {
+											var l = Object.keys(element.alert2s).length
+											data2.push({ label : element.Sig_id , data : l , color: element.Color})
+											// console.log(l)
+										});
+										CircleChart(data2,'#piechart-placeholder2')
 
+									})//then
+									$.get("http://localhost:3001/dashboard/chartCircle3", 
+									{}).then(function(res,status){
+										// console.log("3"+res)
+										var data3 = []
+										// var data1 = []
+										res.forEach(element => {
+											var l = Object.keys(element.alert3s).length
+											data3.push({ label : element.Sig_id , data : l , color: element.Color})
+											
+										});
+										CircleChart(data3,'#piechart-placeholder3')
 
-												var data = google.visualization.arrayToDataTable(DataPlot);
-
-												var options = {
-												chart: {
-													title: 'Company Performance',
-													subtitle: 'Sales, Expenses, and Profit: 2014-2017',
-												},
-												bars: 'vertical',
-												vAxis: {format: 'decimal'},
-												height: 400,
-												colors: ['#1b9e77', '#d95f02', '#7570b3']
-												};
-
-												var chart = new google.charts.Bar(document.getElementById('chart_div'));
-
-												chart.draw(data, google.charts.Bar.convertOptions(options));
-
-												var btns = document.getElementById('btn-group');
-
-												// btns.onclick = function (e) {
-
-												// if (e.target.tagName === 'BUTTON') {
-												// 	options.vAxis.format = e.target.id === 'none' ? '' : e.target.id;
-												// 	chart.draw(data, google.charts.Bar.convertOptions(options));
-												// }
-												// }
-											} //drawChart
 									})//then
 							})//ready
 			}
-			var rule = []
-			//function : Graph Circle
-			window.myFunction()
-			function myFunction() {
-					$(document).ready(function(){
-						$.get("http://localhost:3001/dashboard", 
-						{}).then(function(res,status){
-							
-							res.forEach(element => {
-								rule.push({proto : element.Protocol, "sig_id" :element.Sig_id})
-							});
-							setData(rule)
-
-				jQuery(function($) {
-				$('.easy-pie-chart.percentage').each(function(){
-					var $box = $(this).closest('.infobox');
-					var barColor = $(this).data('color') || (!$box.hasClass('infobox-dark') ? $box.css('color') : 'rgba(255,255,255,0.95)');
-					var trackColor = barColor == 'rgba(255,255,255,0.95)' ? 'rgba(255,255,255,0.25)' : '#E2E2E2';
-					var size = parseInt($(this).data('size')) || 50;
-					$(this).easyPieChart({
-						barColor: barColor,
-						trackColor: trackColor,
-						scaleColor: false,
-						lineCap: 'butt',
-						lineWidth: parseInt(size/10),
-						animate: ace.vars['old_ie'] ? false : 1000,
-						size: size
-					});
-				})
-			
-				$('.sparkline').each(function(){
-					var $box = $(this).closest('.infobox');
-					var barColor = !$box.hasClass('infobox-dark') ? $box.css('color') : '#FFF';
-					$(this).sparkline('html',
-									 {
-										tagValuesAttribute:'data-values',
-										type: 'bar',
-										barColor: barColor ,
-										chartRangeMin:$(this).data('min') || 0
-									 });
-				});
+		//recursive : chartCircle
+		function CircleChart(data,position){
 			
 			
-			  //flot chart resize plugin, somehow manipulates default browser resize event to optimize it!
-			  //but sometimes it brings up errors with normal resize event handlers
-			  $.resize.throttleWindow = false;
-//piechart
-			  var placeholder = $('#piechart-placeholder').css({'width':'90%' , 'min-height':'150px'});
-			  var placeholder2 = $('#piechart-placeholder2').css({'width':'90%' , 'min-height':'150px'});
-			  var placeholder3 = $('#piechart-placeholder3').css({'width':'90%' , 'min-height':'150px'});
-			  
-			  var l = res.length
-			  console.log("data = "+l)
-			  var data = []
-			  var data2 = []
-			  var data3 = []
 
-			  
+			var placeholder = $(position).css({'width':'90%' , 'min-height':'150px'});
+			
+			// var data = []
 
-				res.forEach(element => {
-					
-					
-					// data.push({ label : element._id , data : element.total_packet , color: getRandomColor()})
-					data.push({ label : element.Sig_id , data : 25 , color: element.Color})
-					
-				});
+			// data.push({ label : 10000005 , data : 25 , color: '#1b9e77'})
+
+			drawPieChart(placeholder, data);
+			placeholder.data('chart', data);
+			placeholder.data('draw', drawPieChart);
+
+			function drawPieChart(placeholder, data, position) {
+							$.plot(placeholder, data, {
+								series: {
+									pie: {
+										show: true,
+										tilt:0.8,
+										highlight: {
+											opacity: 0.25
+										},
+										stroke: {
+											color: '#fff',
+											width: 2
+										},
+										startAngle: 2
+									}
+								},
+								legend: {
+									show: true,
+									position: position || "ne", 
+									labelBoxBorderColor: null,
+									margin:[-30,15]
+								},
+								grid: {
+									hoverable: true,
+									clickable: true
+								}
+							})
+						}
+			var $tooltip = $("<div class='tooltip top in'><div class='tooltip-inner'></div></div>").hide().appendTo('body');
+			var previousPoint = null;
 				
-				res.forEach(element => {
-					
-					data2.push({ label : element.Sig_id , data : 25 , color: element.Color})
-					// data2.push({ label : element.Sig_id , data : 25 , color: "#68BC32"})
+				placeholder.on('plothover', function (event, pos, item) {
+					if(item) {
+						if (previousPoint != item.seriesIndex) {
+							previousPoint = item.seriesIndex;
+							var tip = item.series['label'] + " : " + item.series['percent']+'%';
+							$tooltip.show().children(0).text(tip);
+						}
+						$tooltip.css({top:pos.pageY + 10, left:pos.pageX + 10});
+					} else {
+						$tooltip.hide();
+						previousPoint = null;
+					}
 					
 				});
+			
 				
-				res.forEach(element => {
-					
-					data3.push({ label : element.Sig_id , data : 25 , color: element.Color})
-					// data3.push({ label : element.Sig_id , data : 25 , color: "#68BC32"})
-					
-				});
-			  
-			  function drawPieChart(placeholder, data, position) {
-			 	  $.plot(placeholder, data, {
-					series: {
-						pie: {
-							show: true,
-							tilt:0.8,
-							highlight: {
-								opacity: 0.25
-							},
-							stroke: {
-								color: '#fff',
-								width: 2
-							},
-							startAngle: 2
-						}
-					},
-					legend: {
-						show: true,
-						position: position || "ne", 
-						labelBoxBorderColor: null,
-						margin:[-30,15]
-					}
-					,
-					grid: {
-						hoverable: true,
-						clickable: true
-					}
-				 })
-			 }
-			 
-			 function drawPieChart2(placeholder, data, position) {
-			 	  $.plot(placeholder, data, {
-					series: {
-						pie: {
-							show: true,
-							tilt:0.8,
-							highlight: {
-								opacity: 0.25
-							},
-							stroke: {
-								color: '#fff',
-								width: 2
-							},
-							startAngle: 2
-						}
-					},
-					legend: {
-						show: true,
-						position: position || "ne", 
-						labelBoxBorderColor: null,
-						margin:[-30,15]
-					}
-					,
-					grid: {
-						hoverable: true,
-						clickable: true
-					}
-				 })
-			 }
-			 
-			 function drawPieChart3(placeholder, data, position) {
-			 	  $.plot(placeholder, data, {
-					series: {
-						pie: {
-							show: true,
-							tilt:0.8,
-							highlight: {
-								opacity: 0.25
-							},
-							stroke: {
-								color: '#fff',
-								width: 2
-							},
-							startAngle: 2
-						}
-					},
-					legend: {
-						show: true,
-						position: position || "ne", 
-						labelBoxBorderColor: null,
-						margin:[-30,15]
-					}
-					,
-					grid: {
-						hoverable: true,
-						clickable: true
-					}
-				 })
-			 }
-			 
-			 
-			 drawPieChart(placeholder, data);
-			 drawPieChart2(placeholder2, data2);
-			 drawPieChart3(placeholder3, data3);
-			 
-			
-			 /**
-			 we saved the drawing function and the data to redraw with different position later when switching to RTL mode dynamically
-			 so that's not needed actually.
-			 */
-			 placeholder.data('chart', data);
-			 placeholder2.data('chart', data2);
-			 placeholder3.data('chart', data3);
-			 
-			 placeholder.data('draw', drawPieChart);
-			 placeholder2.data('draw', drawPieChart2);
-			 placeholder3.data('draw', drawPieChart3);
-			 
-			
-			})//jquery
+		}
+		
+		window.noti_alert1()
+			window.noti_alert2()
+			window.noti_alert3()
+			function noti_alert1(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert1", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert1 = "+l)
+						$('#new_alert1')[0].innerHTML += l
+						
+						
+					})
+				}
+			function noti_alert2(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert2", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert2 = "+l)
+						$('#new_alert2')[0].innerHTML += l
+						
+						
+					})
+				}
+			function noti_alert3(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert3", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert3 = "+l)
+						$('#new_alert3')[0].innerHTML += l
+						
+						
+					})
+				}
+			window.all_noti_alert()
+			function all_noti_alert(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/all_noti_alert", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						$('#all_noti_alert')[0].innerHTML += res
+						$('#all_noti_alert1')[0].innerHTML += res
+						
+						
+					})
+				}
 
-							
-					}) //then
-				}) //ready function
+            
+			
+			function table1(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable1", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
 			}
+			function table2(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable2", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			function table3(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable3", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			
+
+
+		//Table Rule
+		window.tableRule()
+		window.tableRule1()
+		window.tableRule2()
+
+        function tableRule(){
+            $(document).ready(function(){
+                $.get("http://localhost:3001/dashboard/Rule1", 
+                {}).then(function(res,status){
+                        // console.log(res)
+
+                        if(status!="success"){
+                            console.log("err")
+                        }else{
+                            var len = res.length
+                            // console.log("Length = "+len)
+							if(len==0){
+									$(document).ready(function() {    
+									$('table tbody')[0].innerHTML +=
+									"Not Found"
+								})
+							}else{
+								res.forEach(element => {
+									if(element.Type=="alert"){
+										// $(document).ready(function() {    
+										var body = "<tr>"
+										body += "<td>"+element.Type+"</td>"
+										body += "<td>"+element.Protocaol+"</td>"
+										body += "<td>"+element.Sig_id+"</td>"
+										body += "<td>"+element.Msg+"</td>"
+										body += "<td>"+element.Use+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-success arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table1" ).append(body);
+									
+								
+									}else if(element.Type=="drop"){
+										var body = "<tr>"
+										body += "<td>"+element.Type+"</td>"
+										body += "<td>"+element.Protocaol+"</td>"
+										body += "<td>"+element.Sig_id+"</td>"
+										body += "<td>"+element.Msg+"</td>"
+										body += "<td>"+element.Use+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-danger arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table1" ).append(body);
+									
+									}else{
+										var body = "<tr>"
+										body += "<td>"+element.Type+"</td>"
+										body += "<td>"+element.Protocaol+"</td>"
+										body += "<td>"+element.Sig_id+"</td>"
+										body += "<td>"+element.Msg+"</td>"
+										body += "<td>"+element.Use+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-default arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table1" ).append(body);
+									
+									}
+									
+								});
+								$( "#dynamic-table1").DataTable();
+								//"<span class=\"label label-danger label-arrow label-arrow-left\">Allow</span>" +
+								//"<span class=\"label label-success label-arrow label-arrow-left\">Allow</span>" +
+									
+							}
+						}
+                })
+            })
+		}		
+
+		function tableRule1(){
+            $(document).ready(function(){
+                $.get("http://localhost:3001/dashboard/Rule2", 
+                {}).then(function(res,status){
+                        // console.log(res)
+
+                        if(status!="success"){
+                            console.log("err")
+                        }else{
+                            var len = res.length
+                            // console.log("Length = "+len)
+							if(len==0){
+									$(document).ready(function() {    
+									$('table tbody')[0].innerHTML +=
+									"Not Found"
+								})
+							}else{
+								res.forEach(element => {
+									if(element.Type=="alert"){
+										// $(document).ready(function() {    
+										var body = "<tr>"
+										body += "<td>"+element.Type+"</td>"
+										body += "<td>"+element.Protocaol+"</td>"
+										body += "<td>"+element.Sig_id+"</td>"
+										body += "<td>"+element.Msg+"</td>"
+										body += "<td>"+element.Use+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-success arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table2" ).append(body);
+									
+								
+									}else if(element.Type=="drop"){
+										var body = "<tr>"
+										body += "<td>"+element.Type+"</td>"
+										body += "<td>"+element.Protocaol+"</td>"
+										body += "<td>"+element.Sig_id+"</td>"
+										body += "<td>"+element.Msg+"</td>"
+										body += "<td>"+element.Use+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-danger arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table2" ).append(body);
+									
+									}else{
+										var body = "<tr>"
+										body += "<td>"+element.Type+"</td>"
+										body += "<td>"+element.Protocaol+"</td>"
+										body += "<td>"+element.Sig_id+"</td>"
+										body += "<td>"+element.Msg+"</td>"
+										body += "<td>"+element.Use+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-default arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table3" ).append(body);
+									
+									}
+									
+								});
+								$( "#dynamic-table2").DataTable();
+								//"<span class=\"label label-danger label-arrow label-arrow-left\">Allow</span>" +
+								//"<span class=\"label label-success label-arrow label-arrow-left\">Allow</span>" +
+									
+							}
+						}
+                })
+            })
+		}		
+		function tableRule2(){
+            $(document).ready(function(){
+                $.get("http://localhost:3001/dashboard/Rule3", 
+                {}).then(function(res,status){
+                        // console.log(res)
+
+                        if(status!="success"){
+                            console.log("err")
+                        }else{
+                            var len = res.length
+                            // console.log("Length = "+len)
+							if(len==0){
+									$(document).ready(function() {    
+									$('table tbody')[0].innerHTML +=
+									"Not Found"
+								})
+							}else{
+									res.forEach(element => {
+									if(element.Type=="alert"){
+										// $(document).ready(function() {    
+										var body = "<tr>"
+										body += "<td>"+element.Type+"</td>"
+										body += "<td>"+element.Protocaol+"</td>"
+										body += "<td>"+element.Sig_id+"</td>"
+										body += "<td>"+element.Msg+"</td>"
+										body += "<td>"+element.Use+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-success arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table3" ).append(body);
+									
+								
+									}else if(element.Type=="drop"){
+										var body = "<tr>"
+										body += "<td>"+element.Type+"</td>"
+										body += "<td>"+element.Protocaol+"</td>"
+										body += "<td>"+element.Sig_id+"</td>"
+										body += "<td>"+element.Msg+"</td>"
+										body += "<td>"+element.Use+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-danger arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table3" ).append(body);
+									
+									}else{
+										var body = "<tr>"
+										body += "<td>"+element.Type+"</td>"
+										body += "<td>"+element.Protocaol+"</td>"
+										body += "<td>"+element.Sig_id+"</td>"
+										body += "<td>"+element.Msg+"</td>"
+										body += "<td>"+element.Use+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-default arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table3" ).append(body);
+									
+									}
+									
+								});
+								$( "#dynamic-table3").DataTable();
+								//"<span class=\"label label-danger label-arrow label-arrow-left\">Allow</span>" +
+								//"<span class=\"label label-success label-arrow label-arrow-left\">Allow</span>" +
+									
+							}
+						}
+                })
+            })
+		}		
+
+		
+			
 		</script>
 	</body>
 </html>

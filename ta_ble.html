@@ -80,13 +80,13 @@
 						<li class="purple dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important">10</span>
+								<span class="badge badge-important" id="all_noti_alert"></span>
 							</a>
 <!-- All Notification -->
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									10 Notifications
+									Notifications
 								</li>
 
 								<li class="dropdown-content">
@@ -98,35 +98,35 @@
 														<i class="btn btn-xs no-hover btn-pink fa bigger-110 fa-exclamation-triangle"></i>
 														All New Detect !!
 													</span>
-													<span class="pull-right badge badge-info">+12</span>
+													<span class="pull-right badge badge-info" id="all_noti_alert1"></span>
 												</div>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables.html">
+											<a href="tables.html" onclick="table1()">
 												<i class="fa bigger-110 fa-user">
 														New Update By Raspberry Pi 1
 												</i>
-												<span class="pull-right badge badge-info">+11</span>
+												<span class="pull-right badge badge-info" ><div id="new_alert1"></div></span>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables_pi2.html">
+											<a href="tables_pi2.html" onclick="table2()">
 													<i class="fa bigger-110 fa-user">
 															New Update By Raspberry Pi 2
 													</i>
-												<span class="pull-right badge badge-info">+12</span>
+												<span class="pull-right badge badge-info" ><div id="new_alert2"></div></span>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables_pi3.html">
+											<a href="tables_pi3.html" onclick="table3()">
 													<i class="fa bigger-110 fa-user">
 															New Update By Raspberry Pi 3
 													</i>
-												<span class="pull-right badge badge-info">+8</span>
+												<span class="pull-right badge badge-info" ><div id="new_alert3"></div></span>
 											</a>
 										</li>
 									</ul>
@@ -347,9 +347,7 @@
 
 <!--  jQuery dataTables -->
 								
-<style>
 
-</style>
 
 								<div class="row">
 									<div class="col-xs-12">
@@ -365,8 +363,8 @@
 										<!-- div.table-responsive -->
 
 										<!-- div.dataTables_borderWrap -->
-										<div >
-											<table id="dynamic-table" class="table table-striped table-bordered table-hover" >
+										<div>
+											<table id="dynamic-table1" class="table table-striped table-bordered table-hover">
 												<thead>
 												<tr>
 													<th class="center">
@@ -388,10 +386,8 @@
 													<!-- <th>Optional</th> -->
 												</tr>
 											</thead>
-											<div >
-												<tbody ></tbody>
-											</div>
-                                                
+
+                                                <tbody></tbody>
                                                 
 
 											</table>
@@ -428,20 +424,16 @@
 		<!-- basic scripts -->
 
 		<!--[if !IE]> -->
-		<script src="assets/js/jquery-2.1.4.min.js"></script>
-
-		<!-- <![endif]-->
-
-		<!--[if IE]>
-<script src="assets/js/jquery-1.11.3.min.js"></script>
-<![endif]-->
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
 		<script type="text/javascript">
 			if('ontouchstart' in document.documentElement) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
 		<script src="assets/js/bootstrap.min.js"></script>
 
 		<!-- page specific plugin scripts -->
-		<script src="assets/js/jquery.dataTables.min.js"></script>
+		<!-- https://code.jquery.com/jquery-1.12.4.js -->
+<!-- https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js -->
+		<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
 		<script src="assets/js/jquery.dataTables.bootstrap.min.js"></script>
 		<script src="assets/js/dataTables.buttons.min.js"></script>
 		<script src="assets/js/buttons.flash.min.js"></script>
@@ -456,79 +448,120 @@
 
 		<script type="text/javascript">
 
-			$(document).ready(function(){
-				$('#dynamic-table').DataTable();
-			});
-
-
-			$(document).ready(function(){
-						var token = localStorage.getItem("Token")
-						$.post("http://localhost:3001/profile/user", 
-						{token:token}).then(function(res,status){
-							console.log(res)
-									$(document).ready(function() {    
-									$('#user')[0].innerHTML +=
-									res.docs.Username
+			// $(document).ready(function(){
+			// 			var token = localStorage.getItem("Token")
+			// 			$.post("http://localhost:3001/profile/user", 
+			// 			{token:token}).then(function(res,status){
+			// 				console.log(res)
+			// 						$(document).ready(function() {    
+			// 						$('#user')[0].innerHTML +=
+			// 						res.docs.Username
 									
-								})
-						})
-			})
+			// 					})
+			// 			})
+			// })
 
 
-			window.check()
+			// window.check()
 
-			function check(){
-				console.log("check")
-				var token = localStorage.getItem("Token")
-				var admin = localStorage.getItem("Admin")
-				var status = localStorage.getItem("Status")
-				if(token){
-					console.log("pass")
-                    if(admin==0){
-                        window.location.href= 'login.html'
-                    }else if(admin==1){
-						if(status=="Admin"){
-							var hiddenInput = document.getElementsByClassName("isHidden") //admin menu
-							hiddenInput[0].style.display = "block"  //admin menu
-						}else if(status=="Visitor"){
+			// function check(){
+			// 	console.log("check")
+			// 	var token = localStorage.getItem("Token")
+			// 	var admin = localStorage.getItem("Admin")
+			// 	var status = localStorage.getItem("Status")
+			// 	if(token){
+			// 		console.log("pass")
+            //         if(admin==0){
+            //             window.location.href= 'login.html'
+            //         }else if(admin==1){
+			// 			if(status=="Admin"){
+			// 				var hiddenInput = document.getElementsByClassName("isHidden") //admin menu
+			// 				hiddenInput[0].style.display = "block"  //admin menu
+			// 			}else if(status=="Visitor"){
 
-						}
+			// 			}
                         
-                    }
-				}else{
-					window.location.href= 'login.html'
+            //         }
+			// 	}else{
+			// 		window.location.href= 'login.html'
                 
-			    }
-            }
+			//     }
+            // }
 			
-			function logout(){
-				console.log("logout")
-				localStorage.removeItem("Token");
-				localStorage.removeItem("Status");
-				var admin = localStorage.getItem("Admin")
-				if(admin){
-					localStorage.removeItem("Admin");
-				}
-				window.location.href= 'login.html'
-			}
+			// function logout(){
+			// 	console.log("logout")
+			// 	localStorage.removeItem("Token");
+			// 	localStorage.removeItem("Status");
+			// 	var admin = localStorage.getItem("Admin")
+			// 	if(admin){
+			// 		localStorage.removeItem("Admin");
+			// 	}
+			// 	window.location.href= 'login.html'
+			// }
 
 		</script>
 		
 
 
         <script>
-            // window.myReload()
-            function myReload() {
-                    
-                location.reload();
-
-                }
-                
             
+                
+            window.noti_alert1()
+			window.noti_alert2()
+			window.noti_alert3()
+			function noti_alert1(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert1", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert1 = "+l)
+						$('#new_alert1')[0].innerHTML += l
+						
+						
+					})
+				}
+			function noti_alert2(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert2", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert2 = "+l)
+						$('#new_alert2')[0].innerHTML += l
+						
+						
+					})
+				}
+			function noti_alert3(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert3", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert3 = "+l)
+						$('#new_alert3')[0].innerHTML += l
+						
+						
+					})
+				}
+			window.all_noti_alert()
+			function all_noti_alert(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/all_noti_alert", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						$('#all_noti_alert')[0].innerHTML += res
+						$('#all_noti_alert1')[0].innerHTML += res
+						
+						
+					})
+				}
 
-            window.query()
+            
+			window.query()
             function query(){
-            $(document).ready(function(){
+            	$(document).ready(function(){
                 $.get("http://localhost:3001/tables/table1", 
                 {}).then(function(res,status){
                         console.log(res)
@@ -545,54 +578,60 @@
 								})
 							}else{
 									res.forEach(element => {
-									$(document).ready(function() {    
-									$('#dynamic-table tbody')[0].innerHTML +=
-									"<tr>" +
-											"<td class=\"center\">"+
-												"<label class=\"pos-rel\">"+
-													"<input type=\"checkbox\" class=\"ace\" />"+
-													"<span class=\"lbl\"></span>"+
-												"</label>"+
-											"</td>"+
-											"<td>"+
-												// IP Addr
-												element.src+
-                                            "</td>"+
-                                            "<td>"+
-												// Protocal
-												element.proto+
-                                            "</td>"+
-                                            "<td>"+
-												// Date
-												element.timestamp+
-                                            "</td>"+
-                                            "<td>"+
-												// Signature ID
-												element.sig_id+
-                                            "</td>"+
-                                            "<td>"+
-												// Type
-												element.msg+
-                                            "</td>"+
-                                                //Status
-											"<td class=\"hidden-480\">"+
-												"<span class=\"label label-success arrowed\">Allow</span>" +
-											"</td>" +
-									"</tr>"
-									
-								})
+										var body = "<tr>"
+										body += "<td class\"center\">"+"</td>"
+										body += "<label class=\"pos-res\">"
+										body += "<input type=\"checkbox\" class=\"ace\" />"
+										body += "<span class=\"lbl\"></span>"
+										body += "</label>"
+										body += "</td>"
+										body += "<td>"+element.src+"</td>"
+										body += "<td>"+element.proto+"</td>"
+										body += "<td>"+element.timestamp+"</td>"
+										body += "<td>"+element.sig_id+"</td>"
+										body += "<td>"+element.msg+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-success arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#dynamic-table1" ).append(body);
 								});
-									
+								/*DataTables instantiation.*/
+								$( "#dynamic-table1" ).DataTable();
+															
 							}
 						}
-
-                })
+						// $('dynamic-table').DataTable();
+                })//then
                         
                     
-            })
-            
-            
-        }
+            	})//ready
+			}//query
+			function table1(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable1", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			function table2(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable2", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			function table3(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable3", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			
         </script>
 	</body>
 </html>

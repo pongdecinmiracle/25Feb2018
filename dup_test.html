@@ -45,7 +45,7 @@
 				li.isHidden{
 					display : none
 				}
-				li.isHidden2{
+                li.isHidden2{
 					display : none
 				}
 			</style>
@@ -80,13 +80,13 @@
 						<li class="purple dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important">10</span>
+								<span class="badge badge-important" id="all_noti_alert"></span>
 							</a>
 <!-- All Notification -->
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									10 Notifications
+									Notifications
 								</li>
 
 								<li class="dropdown-content">
@@ -98,35 +98,35 @@
 														<i class="btn btn-xs no-hover btn-pink fa bigger-110 fa-exclamation-triangle"></i>
 														All New Detect !!
 													</span>
-													<span class="pull-right badge badge-info">+12</span>
+													<span class="pull-right badge badge-info" id="all_noti_alert1"></span>
 												</div>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables.html">
+											<a href="tables.html" onclick="table1()">
 												<i class="fa bigger-110 fa-user">
 														New Update By Raspberry Pi 1
 												</i>
-												<span class="pull-right badge badge-info">+11</span>
+												<span class="pull-right badge badge-info" ><div id="new_alert1"></div></span>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables_pi2.html">
+											<a href="tables_pi2.html" onclick="table2()">
 													<i class="fa bigger-110 fa-user">
 															New Update By Raspberry Pi 2
 													</i>
-												<span class="pull-right badge badge-info">+12</span>
+												<span class="pull-right badge badge-info" ><div id="new_alert2"></div></span>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables_pi3.html">
+											<a href="tables_pi3.html" onclick="table3()">
 													<i class="fa bigger-110 fa-user">
 															New Update By Raspberry Pi 3
 													</i>
-												<span class="pull-right badge badge-info">+8</span>
+												<span class="pull-right badge badge-info" ><div id="new_alert3"></div></span>
 											</a>
 										</li>
 									</ul>
@@ -143,8 +143,8 @@
 								<img class="nav-user-photo" src="assets/images/avatars/avatar2.png" alt="User's Photo" />
 								<span class="user-info">
 									<small>Welcome,</small>
-									<div id="user"></div>
-<!-- User -->
+<!-- User -->							<div id="user"></div>
+									
 								</span>
 
 								<i class="ace-icon fa fa-caret-down"></i>
@@ -302,7 +302,6 @@
 						</li>
 	
 					</ul><!-- /.nav-list -->
-
 				<div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
 					<i id="sidebar-toggle-icon" class="ace-icon fa fa-angle-double-left ace-save-state" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
 				</div>
@@ -318,9 +317,9 @@
 							</li>
 
 							<li>
-								<a href="tables.html">Tables</a>
+								<a href="verify.html">Verify</a>
 							</li>
-							<li class="active">All Package</li>
+							
 						</ul><!-- /.breadcrumb -->
 
 						<div class="nav-search" id="nav-search">
@@ -337,37 +336,18 @@
 
 						<div class="page-header">
 							<h1>
-								Tables
-								<small>
-									<i class="ace-icon fa fa-angle-double-right"></i>
-									Static &amp; Dynamic Tables
-								</small>
+								User Profile
 							</h1>
 						</div><!-- /.page-header -->
-
-<!--  jQuery dataTables -->
-								
-<style>
-
-</style>
-
+<!-- Start -->
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
 								<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">All Detect : Raspberry Pi 1</h3>
-
-										<div class="clearfix">
-											<div class="pull-right tableTools-container"></div>
-										</div>
-										<div class="table-header">
-											Results for "Latest Packet"
-										</div>
-
-										<!-- div.table-responsive -->
-
-										<!-- div.dataTables_borderWrap -->
-										<div >
-											<table id="dynamic-table" class="table table-striped table-bordered table-hover" >
-												<thead>
+                                        <form>
+                                        <table id="simple-table" class="table  table-bordered table-hover">
+											<thead>
 												<tr>
 													<th class="center">
 														<label class="pos-rel">
@@ -375,35 +355,36 @@
 															<span class="lbl"></span>
 														</label>
 													</th>
-													<!-- <th>Details</th> class="detail-col" -->
-                                                    <th>IP Address (SRC)</th>
-                                                    <th>Protocal</th>
+													<!-- <th class="detail-col">Details</th> -->
+													<th>Email</th>
 													<th>
 														<i class="ace-icon fa fa-clock-o bigger-110 hidden-480"></i>
-														Date
-                                                    </th>
-                                                    <th>Signature ID</th>
+														Username
+													</th>
 													<th>Type</th>
 													<th class="hidden-480">Status</th>
 													<!-- <th>Optional</th> -->
 												</tr>
 											</thead>
-											<div >
-												<tbody ></tbody>
-											</div>
                                                 
-                                                
+                                                        <tbody></tbody>
+                                        </table>
+                                        
+                                        <div class="container">
+                                            <button type="button" class="btn btn-primary" onclick="myFunction()">Update</button>
+                                        </div>
+                                        </form>
+                                        
 
-											</table>
-										</div>
-									</div>
-								</div>
-
-								
+									</div><!-- /.span -->
+                                </div><!-- /.row -->
+                                
+<!-- End -->
 
 								<!-- PAGE CONTENT ENDS -->
 							</div><!-- /.col -->
 						</div><!-- /.row -->
+						
 					</div><!-- /.page-content -->
 				</div>
 			</div><!-- /.main-content -->
@@ -453,31 +434,10 @@
 		<!-- ace scripts -->
 		<script src="assets/js/ace-elements.min.js"></script>
 		<script src="assets/js/ace.min.js"></script>
+    <script type="text/javascript">
+        window.check()
 
-		<script type="text/javascript">
-
-			$(document).ready(function(){
-				$('#dynamic-table').DataTable();
-			});
-
-
-			$(document).ready(function(){
-						var token = localStorage.getItem("Token")
-						$.post("http://localhost:3001/profile/user", 
-						{token:token}).then(function(res,status){
-							console.log(res)
-									$(document).ready(function() {    
-									$('#user')[0].innerHTML +=
-									res.docs.Username
-									
-								})
-						})
-			})
-
-
-			window.check()
-
-			function check(){
+        function check(){
 				console.log("check")
 				var token = localStorage.getItem("Token")
 				var admin = localStorage.getItem("Admin")
@@ -500,99 +460,275 @@
                 
 			    }
             }
-			
-			function logout(){
-				console.log("logout")
-				localStorage.removeItem("Token");
-				localStorage.removeItem("Status");
-				var admin = localStorage.getItem("Admin")
-				if(admin){
-					localStorage.removeItem("Admin");
-				}
-				window.location.href= 'login.html'
+        
+        function logout(){
+            console.log("logout")
+            localStorage.removeItem("Token");
+            localStorage.removeItem("Status");
+            var admin = localStorage.getItem("Admin")
+            if(admin){
+                localStorage.removeItem("Admin");
+            }
+            window.location.href= 'login.html'
+        }
+
+    </script>
+        
+		<script type="text/javascript" >
+// <!-- 
+// 		$(document).ready(function(){
+// 						var token = localStorage.getItem("Token")
+// 						$.post("http://localhost:3001/profile/user", 
+// 						{token:token}).then(function(res,status){
+// 							console.log(res)
+// 									$(document).ready(function() {    
+// 									$('#user')[0].innerHTML +=
+// 									res.docs.Username
+									
+// 								})
+// 						})
+// 			}) -->
+
+		// window.dataQuery()
+
+		function dataQuery(){
+			$.get("http://localhost:3001/tables/testdistinct", 
+                {}).then(function(res,status){
+					// console.log(res)
+
+					res.forEach(element => {
+						$.post("http://localhost:3001/tables/testfind", 
+						{time : element}).then(function(res,status){
+							console.log(res)
+										var body = "<tr>"
+										body += "<td class\"center\">"+"</td>"
+										body += "<label class=\"pos-res\">"
+										body += "<input type=\"checkbox\" class=\"ace\" />"
+										body += "<span class=\"lbl\"></span>"
+										body += "</label>"
+										body += "</td>"
+										body += "<td>"+res.src+"</td>"
+										body += "<td>"+res.proto+"</td>"
+										body += "<td>"+res.timestamp+"</td>"
+										body += "<td>"+res.sig_id+"</td>"
+										body += "<td>"+res.msg+"</td>"
+										body += "<td class=\"hidden-480\">"
+										body += "<span class=\"label label-success arrowed\">Allow</span>"
+										body += "</td>"
+										body += "</tr>"
+									$( "#simple-table tbody").append(body);
+								/*DataTables instantiation.*/
+								
+						});$( "#simple-table" ).DataTable();
+
+					});
+
+				})
 			}
 
-		</script>
-		
+
+			// window.Update_LastDate()
+
+			function Update_LastDate(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/Update_LastDate", 
+					{token:token}).then(function(res,status){
+						// console.log(res)
+
+					})
+				}
+
+			window.noti_alert1()
+			window.noti_alert2()
+			window.noti_alert3()
+			function noti_alert1(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert1", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert1 = "+l)
+						$('#new_alert1')[0].innerHTML += res.l
+						
+						
+					})
+				}
+			function noti_alert2(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert2", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert2 = "+l)
+						$('#new_alert2')[0].innerHTML += res.l
+						
+						
+					})
+				}
+			function noti_alert3(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert3", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert3 = "+l)
+						$('#new_alert3')[0].innerHTML += res.l
+						
+						
+					})
+			}
+			window.all_noti_alert()
+			function all_noti_alert(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/all_noti_alert", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						$('#all_noti_alert')[0].innerHTML += res
+						
+						
+					})
+			}
 
 
-        <script>
-            // window.myReload()
-            function myReload() {
-                    
-                location.reload();
 
-                }
-                
-            
 
-            window.query()
-            function query(){
-            $(document).ready(function(){
-                $.get("http://localhost:3001/tables/table1", 
-                {}).then(function(res,status){
-                        console.log(res)
+// 			// window.check()
+//       window.query()
 
-                        if(status!="success"){
-                            console.log("err")
-                        }else{
-                            var len = res.length
-                            console.log("Length = "+len)
-							if(len==0){
-									$(document).ready(function() {    
-									$('table tbody')[0].innerHTML +=
-									"Not Found"
-								})
-							}else{
-									res.forEach(element => {
-									$(document).ready(function() {    
-									$('#dynamic-table tbody')[0].innerHTML +=
-									"<tr>" +
-											"<td class=\"center\">"+
-												"<label class=\"pos-rel\">"+
-													"<input type=\"checkbox\" class=\"ace\" />"+
-													"<span class=\"lbl\"></span>"+
-												"</label>"+
-											"</td>"+
-											"<td>"+
-												// IP Addr
-												element.src+
-                                            "</td>"+
-                                            "<td>"+
-												// Protocal
-												element.proto+
-                                            "</td>"+
-                                            "<td>"+
-												// Date
-												element.timestamp+
-                                            "</td>"+
-                                            "<td>"+
-												// Signature ID
-												element.sig_id+
-                                            "</td>"+
-                                            "<td>"+
-												// Type
-												element.msg+
-                                            "</td>"+
-                                                //Status
-											"<td class=\"hidden-480\">"+
-												"<span class=\"label label-success arrowed\">Allow</span>" +
-											"</td>" +
-									"</tr>"
+//       function query(){
+//             $(document).ready(function(){
+//                 $.get("http://localhost:3001/profile", 
+//                 {}).then(function(res,status){
+//                         console.log(res)
+
+//                         if(status!="success"){
+//                             console.log("err")
+//                         }else{
+//                             var len = res.length
+//                             console.log("Length = "+len)
+// 							if(len==0){
+// 									$(document).ready(function() {    
+// 									$('table tbody')[0].innerHTML +=
+// 									"Not Found"
+// 								})
+// 							}else{
+// 									res.forEach(element => {
+// 									$(document).ready(function() {    
+// 									$('table tbody')[0].innerHTML +=
+// 									"<tr>" +
+// 											"<td class=\"center\">"+
+// 												"<label class=\"pos-rel\">"+
+// 													"<input type=\"checkbox\" class=\"ace\" />"+
+// 													"<span class=\"lbl\"></span>"+
+// 												"</label>"+
+// 											"</td>"+
+// 											"<td>"+
+// 												// Email
+// 												element.Email+
+// 											"</td>"+
+// 											"<td class=\"hidden-480\">"+
+// 												// Username
+// 												element.Username+
+// 											"</td>"+
+// 											"<td>"+
+// 												// Status
+// 												"OK"+
+// 											"</td>"+
+
+// 											"<td class=\"hidden-480\">"+
+// 												// "<span class=\"label label-sm label-inverse arrowed-in\">Flagged</span>" +
+// 												"<select id=\""+element.Email+"\" >"+
+// 													"<option  value=\"0\">Inactive</option>"+
+// 													"<option  value=\"1\">Admin</option>"+
+// 													"<option  value=\"2\">Visitor</option>"+
+// 												"</select>"+
+// 											"</td>" +
+// 									"</tr>"
 									
-								})
-								});
+// 								})
+// 								});
 									
-							}
-						}
+// 							}
+// 						}
 
-                })
+//                 })
                         
                     
-            })
+//             })
             
             
-        }
-        </script>
+//         }
+
+//         function myFunction() {
+//             $(document).ready(function(){
+//                 $.get("http://localhost:3001/profile", 
+//                 {}).then(function(res,status){
+//                     res.forEach(element => {
+//                         var status_am = document.getElementById(element.Email).value
+//                         console.log(status_am)
+//                         if(status_am==1){
+//                             $.post("http://localhost:3001/profile",
+//                             {
+//                                 Email: element.Email,
+//                                 Username: element.Username,
+// 								Admin: status_am,
+// 								Status : "Admin"
+//                             })
+//                         }else if(status_am==2){
+//                             //Delete
+//                             $.post("http://localhost:3001/profile",
+//                             {
+//                                 Email: element.Email,
+//                                 Username: element.Username,
+//                                 Admin: 1,
+// 								Status : "Visitor"
+//                             })
+//                         }else{
+
+//                         }
+//                     });
+
+//                 })
+//             })
+//             window.location.href = 'verify.html'
+//         }
+        
+
+        
+
+
+// 			function check(){
+// 				console.log("check")
+// 				var Token = localStorage.getItem("Token")
+//                 var admin = localStorage.getItem("Admin")
+// 				if(Token){
+// 					console.log("pass")
+//                     if(admin==0){
+                        
+//                     }else if(admin==1){
+//                         var hiddenInput = document.getElementsByClassName("isHidden")
+//                         // console.log(hiddenInput)
+//                         hiddenInput[0].style.display = "block"
+//                     }
+// 				}else{
+// 					window.location.href= 'login.html'
+                
+// 			    }
+//             }
+
+// 			function logout(){
+// 				console.log("logout")
+// 				localStorage.removeItem("Token");
+// 				localStorage.removeItem("Status");
+// 				var admin = localStorage.getItem("Admin")
+// 				if(admin){
+// 					localStorage.removeItem("Admin");
+// 				}
+// 				window.location.href= 'login.html'
+// 			}
+
+// 		 
+		</script>
+		
 	</body>
 </html>

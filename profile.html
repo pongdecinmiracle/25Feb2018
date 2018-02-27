@@ -79,13 +79,13 @@
 						<li class="purple dropdown-modal">
 							<a data-toggle="dropdown" class="dropdown-toggle" href="#">
 								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
-								<span class="badge badge-important">10</span>
+								<span class="badge badge-important" id="all_noti_alert"></span>
 							</a>
-
+<!-- All Notification -->
 							<ul class="dropdown-menu-right dropdown-navbar navbar-pink dropdown-menu dropdown-caret dropdown-close">
 								<li class="dropdown-header">
 									<i class="ace-icon fa fa-exclamation-triangle"></i>
-									10 Notifications
+									Notifications
 								</li>
 
 								<li class="dropdown-content">
@@ -94,38 +94,40 @@
 											<a href="">
 												<div class="clearfix">
 													<span class="pull-left">
-														<i class="btn btn-xs no-hover btn-pink fa fa-exclamation-triangle"></i>
+														<i class="btn btn-xs no-hover btn-pink fa bigger-110 fa-exclamation-triangle"></i>
 														All New Detect !!
 													</span>
-													<span class="pull-right badge badge-info">+12</span>
+													<span class="pull-right badge badge-info" id="all_noti_alert1"></span>
 												</div>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables.html">
-												<i class="btn btn-xs btn-primary fa fa-user"></i>
-												New Update By Raspberry Pi 1
-												<span class="pull-right badge badge-info">+11</span>
+											<a href="tables.html" onclick="table1()">
+												<i class="fa bigger-110 fa-user">
+														New Update By Raspberry Pi 1
+												</i>
+												<span class="pull-right badge badge-info" ><div id="new_alert1"></div></span>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables_pi2.html">
-												<i class="btn btn-xs btn-primary fa fa-user"></i>
-												New Update By Raspberry Pi 2
-												<span class="pull-right badge badge-info">+12</span>
+											<a href="tables_pi2.html" onclick="table2()">
+													<i class="fa bigger-110 fa-user">
+															New Update By Raspberry Pi 2
+													</i>
+												<span class="pull-right badge badge-info" ><div id="new_alert2"></div></span>
 											</a>
 										</li>
 										
 										<li>
-											<a href="tables_pi3.html">
-												<i class="btn btn-xs btn-primary fa fa-user"></i>
-												New Update By Raspberry Pi 3
-												<span class="pull-right badge badge-info">+8</span>
+											<a href="tables_pi3.html" onclick="table3()">
+													<i class="fa bigger-110 fa-user">
+															New Update By Raspberry Pi 3
+													</i>
+												<span class="pull-right badge badge-info" ><div id="new_alert3"></div></span>
 											</a>
 										</li>
-
 
 
 									</ul>
@@ -577,6 +579,85 @@
 						})
 			})
 
+			window.noti_alert1()
+			window.noti_alert2()
+			window.noti_alert3()
+			function noti_alert1(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert1", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert1 = "+l)
+						$('#new_alert1')[0].innerHTML += l
+						
+						
+					})
+				}
+			function noti_alert2(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert2", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert2 = "+l)
+						$('#new_alert2')[0].innerHTML += l
+						
+						
+					})
+				}
+			function noti_alert3(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/noti_alert3", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						var l = res.length
+						console.log("new_alert3 = "+l)
+						$('#new_alert3')[0].innerHTML += l
+						
+						
+					})
+				}
+			window.all_noti_alert()
+			function all_noti_alert(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/all_noti_alert", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+						$('#all_noti_alert')[0].innerHTML += res
+						$('#all_noti_alert1')[0].innerHTML += res
+						
+						
+					})
+				}
+
+            
+			
+			function table1(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable1", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			function table2(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable2", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			function table3(){
+				var token = localStorage.getItem("Token")
+				$.post("http://localhost:3001/tables/clearNotiTable3", 
+					{token:token}).then(function(res,status){
+						console.log(res)
+					})
+				// console.log("in")
+			}
+			
             // $(document).ready(function(){
             //     $.get("http://localhost:3001/dashboard/table1", 
             //     {}).then(function(res,status){

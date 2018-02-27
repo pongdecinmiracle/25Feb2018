@@ -53,9 +53,9 @@
 //Add Rule
     if (isset($_POST['manual'])) {
         $action = $_POST["action"];
-        $Xman2="echo raspberry | sudo python add_rule.py " ."'".$action."'"." \n";
-        echo $ssh->exec($Xman2);
-        echo $ssh->exec("echo raspberry | sudo systemctl restart snort \n");
+        // $Xman2="echo raspberry | sudo python add_rule.py " ."'".$action."'"." \n";
+        // echo $ssh->exec($Xman2);
+        // echo $ssh->exec("echo raspberry | sudo systemctl restart snort \n");
         echo $action;
 
     }
@@ -64,32 +64,32 @@
     if (isset($_POST['type_action'])) {
         $action = $_POST["type_action"];
         $sid = $_POST["sid_edit"];
-        echo $ssh->exec("echo raspberry | sudo python3 drop_or_alert.py ".$sid." ".$action." \n");
-        echo $ssh->exec("echo raspberry | sudo systemctl restart snort \n");
+        // echo $ssh->exec("echo raspberry | sudo python3 drop_or_alert.py ".$sid." ".$action." \n");
+        // echo $ssh->exec("echo raspberry | sudo systemctl restart snort \n");
         echo $action." ".$sid;
     }
 
 //used
     if (isset($_POST['sid_use'])) {
         $action = $_POST["sid_use"]; 
-        echo $ssh->exec("echo raspberry | sudo python3 use_rule.py ".$action." \n");
-        echo $ssh->exec("echo raspberry | sudo systemctl restart snort \n");
+        // echo $ssh->exec("echo raspberry | sudo python3 use_rule.py ".$action." \n");
+        // echo $ssh->exec("echo raspberry | sudo systemctl restart snort \n");
         echo $action;
     }
 
 //Unused
-    if (isset($_POST['sid_use'])) {
-        $action = $_POST["sid_use"]; 
-        echo $ssh->exec("echo raspberry | sudo python3 use_or_unuse.py ".$action." \n");
-        echo $ssh->exec("echo raspberry | sudo systemctl restart snort \n");
+    if (isset($_POST['sid_unuse'])) {
+        $action = $_POST["sid_unuse"]; 
+        // echo $ssh->exec("echo raspberry | sudo python3 use_or_unuse.py ".$action." \n");
+        // echo $ssh->exec("echo raspberry | sudo systemctl restart snort \n");
         echo $action;
     }
 
 //delete
     if (isset($_POST['sid_delete'])) {
         $action = $_POST["sid_delete"];
-        echo $ssh->exec("echo raspberry | sudo python delete.py "."sid:".$action." \n");
-        echo $ssh->exec("echo raspberry | sudo systemctl restart snort \n");
+        // echo $ssh->exec("echo raspberry | sudo python delete.py "."sid:".$action." \n");
+        // echo $ssh->exec("echo raspberry | sudo systemctl restart snort \n");
         echo $action;
     }
 
